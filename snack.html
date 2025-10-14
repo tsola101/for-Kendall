@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Snack — For Kendall</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#fffafc;
+      --ink:#2a2438;
+      --muted:#6b6377;
+      --rose:#e7b8c9;
+      --rose-2:#f3d9e3;
+      --card:#fff;
+    }
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:
+        radial-gradient(1200px 800px at 20% -10%, var(--rose-2), transparent 60%),
+        radial-gradient(1200px 800px at 120% 10%, #e8f0ff, transparent 55%), var(--bg);
+      color:var(--ink);
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      line-height:1.6;
+    }
+    a{color:inherit;text-decoration:none}
+    .container{max-width:980px;margin:auto;padding:24px}
+    header.hero{padding:72px 24px 36px;text-align:center}
+    .title{font-family:"Playfair Display",serif;font-size:clamp(2rem,5vw,3rem);margin:0}
+    .soft{color:var(--muted)}
+    .card{background:var(--card);border-radius:22px;padding:20px;box-shadow:0 12px 40px rgba(0,0,0,.06)}
+    .btn{display:inline-block;margin-top:16px;border:0;padding:10px 16px;border-radius:16px;background:var(--rose);color:#fff;font-weight:700}
+    img.snack{width:100%;max-width:640px;border-radius:18px;display:block;margin:12px auto 0}
+
+    /* two-picture layout */
+    .snack-grid{
+      display:grid;
+      gap:16px;
+      grid-template-columns:1fr;
+      margin-top:12px;
+    }
+    .snack-grid figure{margin:0;text-align:center}
+    .snack-grid figcaption{margin-top:8px;font-size:.9rem;color:var(--muted)}
+    @media (min-width:720px){.snack-grid{grid-template-columns:1fr 1fr}}
+
+    footer{padding:48px 24px 72px;text-align:center;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <header class="hero container">
+    <h1 class="title">Snack</h1>
+    <a class="btn" href="index.html">← Back home</a>
+  </header>
+
+  <main class="container">
+    <div class="card">
+      <p class="soft">
+        I added these snacks to this website in case you got hungry while exploring our little world.
+      </p>
+
+      <div class="snack-grid">
+        <figure>
+          <img class="snack" src="images/snack-1.png" alt="Snack #1 we’d share">
+          <figcaption>Snack #1</figcaption>
+        </figure>
+
+        <figure>
+          <img class="snack" src="images/snack-2.png" alt="Snack #2 we’d share">
+          <figcaption>Snack #2</figcaption>
+        </figure>
+      </div>
+    </div>
+  </main>
+
+  <footer><p class="soft">Built with love by Adrian</p></footer>
+</body>
+</html>
