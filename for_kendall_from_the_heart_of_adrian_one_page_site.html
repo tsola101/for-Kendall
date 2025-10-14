@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>For Kendall — from the heart of Adrian</title>
+  <meta name="description" content="A quiet, gentle page Adrian made for Kendall." />
+  <meta property="og:title" content="For Kendall — from the heart of Adrian" />
+  <meta property="og:description" content="A quiet, gentle page Adrian made for Kendall." />
+  <meta name="theme-color" content="#f3e8ef" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #fffafc;            /* page background */
+      --ink: #2a2438;          /* primary text */
+      --muted: #6b6377;        /* secondary text */
+      --rose: #e7b8c9;         /* accent */
+      --rose-2:#f3d9e3;        /* light accent */
+      --card:#ffffff;          /* card background */
+      --ring: rgba(231,184,201,.55); /* focus ring */
+    }
+    html,body{height:100%}
+    body{
+      margin:0; background:radial-gradient(1200px 800px at 20% -10%,var(--rose-2),transparent 60%),radial-gradient(1200px 800px at 120% 10%,#e8f0ff,transparent 55%),var(--bg);
+      color:var(--ink); font-family:Inter,system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"; line-height:1.6;
+      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+    }
+    a{color:inherit}
+    .container{max-width:980px;margin-inline:auto;padding:24px}
+    header.hero{isolation:isolate; position:relative; padding:96px 24px 64px; text-align:center}
+    .title{font-family:"Playfair Display",serif; font-size: clamp(2.4rem, 6vw, 4rem); line-height:1.1; margin:0; letter-spacing:.3px}
+    .subtitle{max-width:720px;margin:18px auto 0;color:var(--muted);font-size:clamp(1.05rem,2.6vw,1.2rem)}
+    .btns{display:flex; gap:12px; justify-content:center; margin-top:28px; flex-wrap:wrap}
+    .btn{appearance:none; border:0; padding:12px 18px; border-radius:16px; background:#1f1b24; color:#fff; font-weight:600; cursor:pointer; transition:transform .15s ease, box-shadow .2s ease, background .2s ease}
+    .btn.outline{background:#fff; color:#1f1b24; box-shadow:inset 0 0 0 2px #1f1b24}
+    .btn:hover{transform:translateY(-1px); box-shadow:0 8px 24px rgba(31,27,36,.15)}
+
+    /* Section shells */
+    section{scroll-margin-top:80px; padding:56px 0}
+    .section-title{font-family:"Playfair Display",serif; font-size:clamp(1.6rem,3.8vw,2.2rem); margin:0 0 12px}
+    .section-lead{color:var(--muted); margin-top:0}
+
+    /* Card grid */
+    .grid{display:grid; gap:16px; grid-template-columns:repeat(12,1fr)}
+    .card{grid-column:span 12; background:var(--card); border-radius:22px; padding:20px; box-shadow:0 12px 40px rgba(0,0,0,.06); position:relative; overflow:hidden}
+    @media (min-width:640px){ .card.sm-6{grid-column:span 6} }
+    @media (min-width:960px){ .card.md-4{grid-column:span 4} }
+    .card h4{margin:4px 0 8px; font-size:1.05rem}
+    .tag{display:inline-block; padding:6px 10px; font-size:.8rem; background:var(--rose-2); color:#4a3e47; border-radius:999px}
+
+    /* Message block */
+    .message{font-size:1.05rem; padding:28px; border-radius:22px; background:linear-gradient(180deg, #fff, #fff7fb); box-shadow:0 10px 35px rgba(0,0,0,.05)}
+    .quote{font-family:"Playfair Display",serif; font-size:1.25rem; line-height:1.5}
+
+    /* Reveal widget */
+    details.reveal{border-radius:18px; background:#ffffff; padding:18px 18px 6px; box-shadow:0 8px 30px rgba(0,0,0,.06)}
+    details.reveal summary{list-style:none; cursor:pointer; font-weight:700}
+    details.reveal[open]{outline:2px solid var(--ring)}
+
+    /* Audio player */
+    .audio-wrap{display:flex; gap:12px; align-items:center; flex-wrap:wrap}
+    .soft{color:var(--muted)}
+
+    /* Footer */
+    footer{padding:48px 24px 72px; text-align:center; color:var(--muted)}
+
+    /* Entrances */
+    .fade{opacity:0; transform:translateY(10px); transition:opacity .7s ease, transform .7s ease}
+    .fade.show{opacity:1; transform:none}
+
+    /* Accessibility */
+    :focus-visible{outline:3px solid var(--ring); outline-offset:4px; border-radius:12px}
+    @media (prefers-reduced-motion:reduce){
+      *{animation:none!important; transition:none!important}
+      .fade{opacity:1!important; transform:none!important}
+    }
+  </style>
+</head>
+<body>
+  <header class="hero container">
+    <h1 class="title fade">For Kendall — from the heart of Adrian</h1>
+    <p class="subtitle fade" style="--delay:.1s">A quiet space where my words can reach you, even when I can't.</p>
+    <div class="btns fade" style="--delay:.2s">
+      <a class="btn" href="#message">Read the message</a>
+      <a class="btn outline" href="#memories">Little memories</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- SECTION: The Message -->
+    <section id="message" class="fade">
+      <h2 class="section-title">The Message</h2>
+      <p class="section-lead">When I gave you space, it was never out of distance — it was out of love.</p>
+      <div class="message">
+        <p class="quote">Kendall, I hope you’ll take a moment to read the message I sent you during the space — not just once, but whenever you need it. Every word came from a real place in my heart. I want you to see my intentions clearly: when I give you the space you asked for, it’s because I care enough to let you breathe, while holding faith in what we had and what could be again.
+        <br><br>
+        Even if I’m quiet for a while, let that message be a way to still hear my voice — the voice that loves you, believes in you, and hopes that when the time is right, things will be different and better between us.
+        <br><br> — Adrian</p>
+      </div>
+      <div style="height:12px"></div>
+      <details class="reveal">
+        <summary>Click to reveal a little reminder</summary>
+        <p class="soft">You are the chapter I always read twice.</p>
+      </details>
+      <div style="height:18px"></div>
+      <div class="audio-wrap">
+        <button class="btn" id="playBtn" type="button">Play a soft song</button>
+        <span class="soft">(optional — you can mute anytime)</span>
+      </div>
+      <!-- Replace src with your MP3 (e.g., /music/your-song.mp3). Autoplay is off by default. -->
+      <audio id="bgAudio" src="" preload="none"></audio>
+    </section>
+
+    <!-- SECTION: Little Memories -->
+    <section id="memories" class="fade">
+      <h2 class="section-title">Little Memories</h2>
+      <p class="section-lead">Tiny snapshots that make me smile.</p>
+      <div class="grid">
+        <article class="card sm-6 md-4">
+          <span class="tag">🍣 Sushi you converted me to</span>
+          <h4>“I thought I'd hate it — until you.”</h4>
+          <p class="soft">The night I learned new tastes come easier when you’re next to me.</p>
+        </article>
+        <article class="card sm-6 md-4">
+          <span class="tag">🚗 The SHSU drive</span>
+          <h4>Worth every mile</h4>
+          <p class="soft">Windows down, heart light — just to see you.</p>
+        </article>
+        <article class="card sm-6 md-4">
+          <span class="tag">🌙 Quiet laughs</span>
+          <h4>Inside jokes, outside noise</h4>
+          <p class="soft">The way your voice could make a heavy day feel soft again.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- SECTION: What I Hope You Remember -->
+    <section class="fade" id="remember">
+      <h2 class="section-title">What I Hope You Remember</h2>
+      <div class="grid">
+        <article class="card">
+          <p class="quote">I never wanted perfection — only understanding. You taught me patience and depth. For that, I’ll always be grateful.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- SECTION: When You're Ready -->
+    <section class="fade" id="ready">
+      <h2 class="section-title">When You’re Ready</h2>
+      <p class="section-lead">No rush. No pressure. Just peace.</p>
+      <div class="card">
+        <p>If you ever want to share your day again, I’ll be here — quietly rooting for you. Until then, take all the space you need. 🤍</p>
+        <!-- If you want, you can add a contact button below that opens email or a form. -->
+        <!-- <a class="btn" href="mailto:you@example.com">Write to Adrian</a> -->
+      </div>
+    </section>
+  </main>
+
+  <footer class="fade">
+    <p>“For every silence between us, may this page remind you — I still believe in what we had.”</p>
+    <p class="soft">Built with love by Adrian</p>
+  </footer>
+
+  <script>
+    // Simple fade-in on view
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); } });
+    },{threshold:.14});
+    document.querySelectorAll('.fade').forEach(el=>observer.observe(el));
+
+    // Soft audio toggle (user-supplied song URL)
+    const audio = document.getElementById('bgAudio');
+    const btn = document.getElementById('playBtn');
+    btn.addEventListener('click', async ()=>{
+      try{
+        if(!audio.src){
+          // Prompt once for a URL
+          const url = prompt('Paste a link to an MP3 (optional). You can host on Dropbox/Drive with a direct link.');
+          if(url) audio.src = url.trim();
+        }
+        if(audio.paused){ await audio.play(); btn.textContent='Pause music'; }
+        else { audio.pause(); btn.textContent='Play a soft song'; }
+      }catch(err){ alert('Could not play audio. Your browser may block autoplay without interaction or the URL may not be a direct MP3.'); }
+    });
+  </script>
+</body>
+</html>
