@@ -59,9 +59,7 @@
     details.reveal{border-radius:18px; background:#ffffff; padding:18px 18px 6px; box-shadow:0 8px 30px rgba(0,0,0,.06)}
     details.reveal summary{list-style:none; cursor:pointer; font-weight:700}
     details.reveal[open]{outline:2px solid var(--ring)}
-    .audio-wrap{display:flex; gap:12px; align-items:center; flex-wrap:wrap}
     .soft{color:var(--muted)}
-
     footer{padding:48px 24px 72px; text-align:center; color:var(--muted)}
     .fade{opacity:0; transform:translateY(10px); transition:opacity .7s ease, transform .7s ease}
     .fade.show{opacity:1; transform:none}
@@ -78,19 +76,17 @@
     <h1 class="title fade">For Kendall — from the heart of Adrian</h1>
     <p class="subtitle fade" style="--delay:.1s">A quiet space where my words can reach you, even when I can't.</p>
 
-    <!-- FIRST THING: music controls -->
+    <!-- FIRST THING: music + nav controls -->
     <div class="btns fade" style="--delay:.15s">
       <button class="btn" id="playBtn" type="button">Play me</button>
-      <button class="btn outline" id="muteBtn" type="button" aria-pressed="false">Mute</button>
+      <button class="btn outline" id="stopBtn" type="button">Stop music</button>
 
-      <!-- navigation -->
+      <!-- navigation (first click can auto-open the player) -->
       <a class="btn" href="#message">Read the message</a>
-      <a class="btn outline" href="superhero.html">My Superhero →</a>
-      <a class="btn outline" href="memories.html">Little memories</a>
+      <a class="btn outline" href="superhero.html" onclick="return openPlayerIfNeeded(event)">My Superhero →</a>
+      <a class="btn outline" href="memories.html" onclick="return openPlayerIfNeeded(event)">Little memories</a>
+      <a class="btn outline" href="snack.html" onclick="return openPlayerIfNeeded(event)">Snack</a>
     </div>
-
-    <!-- audio lives up top so she can start it immediately -->
-    <audio id="bgAudio" src="audio/all-of-me-piano.mp3" preload="metadata" loop></audio>
   </header>
 
   <main class="container">
@@ -117,7 +113,7 @@
       <p class="section-lead">Who she is, through my eyes.</p>
       <div class="card">
         <p class="soft">A tribute to Kendall Hall — the light that turns ordinary into extraordinary.</p>
-        <a class="btn" href="superhero.html">Read the tribute →</a>
+        <a class="btn" href="superhero.html" onclick="return openPlayerIfNeeded(event)">Read the tribute →</a>
       </div>
     </section>
 
@@ -143,7 +139,7 @@
         </article>
       </div>
       <div style="margin-top:16px">
-        <a class="btn outline" href="memories.html" aria-label="See all memories">See all memories →</a>
+        <a class="btn outline" href="memories.html" onclick="return openPlayerIfNeeded(event)" aria-label="See all memories">See all memories →</a>
       </div>
     </section>
 
@@ -153,7 +149,7 @@
       <p class="section-lead">A tiny treat for the journey.</p>
       <div class="card">
         <p class="soft">If you get hungry while exploring our little world…</p>
-        <a class="btn" href="snack.html">Open the snack →</a>
+        <a class="btn" href="snack.html" onclick="return openPlayerIfNeeded(event)">Open the snack →</a>
       </div>
     </section>
 
@@ -189,43 +185,37 @@
     },{threshold:.14});
     document.querySelectorAll('.fade').forEach(el=>observer.observe(el));
 
-    // Audio controls
-    const audio   = document.getElementById('bgAudio');
-    const playBtn = document.getElementById('playBtn');
-    const muteBtn = document.getElementById('muteBtn');
+    // --- Persistent music popup wiring ---
+    let playerWin = null;
 
-    audio.volume = 0; // start soft
-
-    async function fadeIn() {
-      try {
-        audio.volume = 0;
-        await audio.play();
-        playBtn.textContent = 'Pause music';
-        let v = 0;
-        const t = setInterval(()=>{
-          v = Math.min(1, v + 0.05);
-          audio.volume = v;
-          if(v >= 1) clearInterval(t);
-        }, 120);
-      } catch (e) {
-        alert('Could not play music — tap again if needed.');
-      }
+    function openPlayer() {
+      const features = 'width=360,height=140,menubar=no,toolbar=no,location=no,status=no,resizable=yes,noopener';
+      playerWin = window.open('player.html', 'music', features);
+      if (playerWin) { try { playerWin.focus(); } catch(_){} }
+      sessionStorage.setItem('musicOpen','1');
     }
 
-    playBtn.addEventListener('click', async ()=>{
-      if(audio.paused){
-        await fadeIn();
-      } else {
-        audio.pause();
-        playBtn.textContent = 'Play me';
-      }
-    });
+    function stopPlayer() {
+      try { if (playerWin && !playerWin.closed) playerWin.close(); } catch(e){}
+      // Also attempt to close any window with the same name (if reopened)
+      const maybe = window.open('', 'music');
+      try { if (maybe && !maybe.closed) maybe.close(); } catch(e){}
+      sessionStorage.removeItem('musicOpen');
+    }
 
-    muteBtn.addEventListener('click', ()=>{
-      audio.muted = !audio.muted;
-      muteBtn.textContent = audio.muted ? 'Unmute' : 'Mute';
-      muteBtn.setAttribute('aria-pressed', audio.muted ? 'true' : 'false');
-    });
+    // If the player isn't open yet, open it once, then allow navigation
+    function openPlayerIfNeeded(evt){
+      if (!sessionStorage.getItem('musicOpen')) {
+        openPlayer();
+        // allow normal navigation right after (same click counts as gesture)
+        // no preventDefault -> link proceeds
+      }
+      return true;
+    }
+
+    // Hook header buttons
+    document.getElementById('playBtn').addEventListener('click', openPlayer);
+    document.getElementById('stopBtn').addEventListener('click', stopPlayer);
   </script>
 </body>
 </html>
