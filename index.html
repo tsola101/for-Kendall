@@ -13,13 +13,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg: #fffafc;            /* page background */
-      --ink: #2a2438;           /* primary text */
-      --muted: #6b6377;         /* secondary text */
-      --rose: #e7b8c9;          /* accent */
-      --rose-2:#f3d9e3;         /* light accent */
-      --card:#ffffff;           /* card background */
-      --ring: rgba(231,184,201,.55); /* focus ring */
+      --bg: #fffafc;
+      --ink: #2a2438;
+      --muted: #6b6377;
+      --rose: #e7b8c9;
+      --rose-2:#f3d9e3;
+      --card:#ffffff;
+      --ring: rgba(231,184,201,.55);
     }
     html,body{height:100%}
     body{
@@ -43,37 +43,25 @@
     .btn.outline{background:#fff; color:#1f1b24; box-shadow:inset 0 0 0 2px #1f1b24}
     .btn:hover{transform:translateY(-1px); box-shadow:0 8px 24px rgba(31,27,36,.15)}
 
-    /* Sections */
     section{scroll-margin-top:80px; padding:56px 0}
     .section-title{font-family:"Playfair Display",serif; font-size:clamp(1.6rem,3.8vw,2.2rem); margin:0 0 12px}
     .section-lead{color:var(--muted); margin-top:0}
-
-    /* Card grid */
     .grid{display:grid; gap:16px; grid-template-columns:repeat(12,1fr)}
     .card{grid-column:span 12; background:var(--card); border-radius:22px; padding:20px; box-shadow:0 12px 40px rgba(0,0,0,.06); position:relative; overflow:hidden}
     @media (min-width:640px){ .card.sm-6{grid-column:span 6} }
     @media (min-width:960px){ .card.md-4{grid-column:span 4} }
     .card h4{margin:4px 0 8px; font-size:1.05rem}
     .tag{display:inline-block; padding:6px 10px; font-size:.8rem; background:var(--rose-2); color:#4a3e47; border-radius:999px}
-
-    /* Message block */
     .message{font-size:1.05rem; padding:28px; border-radius:22px; background:linear-gradient(180deg, #fff, #fff7fb); box-shadow:0 10px 35px rgba(0,0,0,.05)}
     .quote{font-family:"Playfair Display",serif; font-size:1.25rem; line-height:1.5}
-
-    /* Reveal & audio */
     details.reveal{border-radius:18px; background:#ffffff; padding:18px 18px 6px; box-shadow:0 8px 30px rgba(0,0,0,.06)}
     details.reveal summary{list-style:none; cursor:pointer; font-weight:700}
     details.reveal[open]{outline:2px solid var(--ring)}
     .audio-wrap{display:flex; gap:12px; align-items:center; flex-wrap:wrap}
     .soft{color:var(--muted)}
-
     footer{padding:48px 24px 72px; text-align:center; color:var(--muted)}
-
-    /* Entrances */
     .fade{opacity:0; transform:translateY(10px); transition:opacity .7s ease, transform .7s ease}
     .fade.show{opacity:1; transform:none}
-
-    /* Accessibility */
     :focus-visible{outline:3px solid var(--ring); outline-offset:4px; border-radius:12px}
     @media (prefers-reduced-motion:reduce){
       *{animation:none!important; transition:none!important}
@@ -85,11 +73,19 @@
   <header class="hero container">
     <h1 class="title fade">For Kendall — from the heart of Adrian</h1>
     <p class="subtitle fade" style="--delay:.1s">A quiet space where my words can reach you, even when I can't.</p>
-    <div class="btns fade" style="--delay:.2s">
+
+    <!-- FIRST THING: music controls -->
+    <div class="btns fade" style="--delay:.15s">
+      <button class="btn" id="playBtn" type="button">Play me</button>
+      <button class="btn outline" id="muteBtn" type="button" aria-pressed="false">Mute</button>
+
+      <!-- existing navigation buttons -->
       <a class="btn" href="#message">Read the message</a>
-      <!-- UPDATED: go to the new page -->
       <a class="btn outline" href="memories.html">Little memories</a>
     </div>
+
+    <!-- audio lives up top so she can start it immediately -->
+    <audio id="bgAudio" src="audio/all-of-me-piano.mp3" preload="metadata" loop></audio>
   </header>
 
   <main class="container">
@@ -108,15 +104,9 @@
         <summary>Click to reveal a little reminder</summary>
         <p class="soft">You are the chapter I always read twice.</p>
       </details>
-      <div style="height:18px"></div>
-      <div class="audio-wrap">
-        <button class="btn" id="playBtn" type="button">Play a soft song</button>
-        <span class="soft">(optional — you can mute anytime)</span>
-      </div>
-      <audio id="bgAudio" src="" preload="none"></audio>
     </section>
 
-    <!-- SECTION: Little Memories (kept here as a teaser, now with a link to the page) -->
+    <!-- SECTION: Little Memories -->
     <section id="memories" class="fade">
       <h2 class="section-title">Little Memories</h2>
       <p class="section-lead">Tiny snapshots that make me smile.</p>
@@ -141,17 +131,17 @@
         <a class="btn outline" href="memories.html" aria-label="See all memories">See all memories →</a>
       </div>
     </section>
-    
-<!-- SECTION: Snack -->
-<section id="snack" class="fade">
-  <h2 class="section-title">Snack</h2>
-  <p class="section-lead">A tiny treat for the journey.</p>
-  <div class="card">
-    <p class="soft">If you get hungry while exploring our little world…</p>
-    <a class="btn" href="snack.html">Open the snack →</a>
-  </div>
-</section>
-    
+
+    <!-- SECTION: Snack -->
+    <section id="snack" class="fade">
+      <h2 class="section-title">Snack</h2>
+      <p class="section-lead">A tiny treat for the journey.</p>
+      <div class="card">
+        <p class="soft">If you get hungry while exploring our little world…</p>
+        <a class="btn" href="snack.html">Open the snack →</a>
+      </div>
+    </section>
+
     <!-- SECTION: What I Hope You Remember -->
     <section class="fade" id="remember">
       <h2 class="section-title">What I Hope You Remember</h2>
@@ -170,8 +160,6 @@
         <p>If you ever want to share your day again, I’ll be here — quietly rooting for you. Until then, take all the space you need. 🤍</p>
       </div>
     </section>
- 
-  
   </main>
 
   <footer class="fade">
@@ -180,24 +168,48 @@
   </footer>
 
   <script>
-    // Simple fade-in on view
+    // Fade in observer
     const observer = new IntersectionObserver((entries)=>{
       entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); } });
     },{threshold:.14});
     document.querySelectorAll('.fade').forEach(el=>observer.observe(el));
 
-    // Soft audio toggle (user-supplied song URL)
-    const audio = document.getElementById('bgAudio');
-    const btn = document.getElementById('playBtn');
-    btn.addEventListener('click', async ()=>{
-      try{
-        if(!audio.src){
-          const url = prompt('Paste a link to an MP3 (optional). You can host on Dropbox/Drive with a direct link.');
-          if(url) audio.src = url.trim();
-        }
-        if(audio.paused){ await audio.play(); btn.textContent='Pause music'; }
-        else { audio.pause(); btn.textContent='Play a soft song'; }
-      }catch(err){ alert('Could not play audio. Your browser may block autoplay without interaction or the URL may not be a direct MP3.'); }
+    // Audio controls
+    const audio   = document.getElementById('bgAudio');
+    const playBtn = document.getElementById('playBtn');
+    const muteBtn = document.getElementById('muteBtn');
+
+    audio.volume = 0; // start soft
+
+    async function fadeIn() {
+      try {
+        audio.volume = 0;
+        await audio.play();
+        playBtn.textContent = 'Pause music';
+        let v = 0;
+        const t = setInterval(()=>{
+          v = Math.min(1, v + 0.05);
+          audio.volume = v;
+          if(v >= 1) clearInterval(t);
+        }, 120);
+      } catch (e) {
+        alert('Could not play music — tap again if needed.');
+      }
+    }
+
+    playBtn.addEventListener('click', async ()=>{
+      if(audio.paused){
+        await fadeIn();
+      } else {
+        audio.pause();
+        playBtn.textContent = 'Play me';
+      }
+    });
+
+    muteBtn.addEventListener('click', ()=>{
+      audio.muted = !audio.muted;
+      muteBtn.textContent = audio.muted ? 'Unmute' : 'Mute';
+      muteBtn.setAttribute('aria-pressed', audio.muted ? 'true' : 'false');
     });
   </script>
 </body>
