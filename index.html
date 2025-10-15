@@ -52,16 +52,20 @@
     @media (min-width:960px){ .card.md-4{grid-column:span 4} }
     .card h4{margin:4px 0 8px; font-size:1.05rem}
     .tag{display:inline-block; padding:6px 10px; font-size:.8rem; background:var(--rose-2); color:#4a3e47; border-radius:999px}
+
     .message{font-size:1.05rem; padding:28px; border-radius:22px; background:linear-gradient(180deg, #fff, #fff7fb); box-shadow:0 10px 35px rgba(0,0,0,.05)}
     .quote{font-family:"Playfair Display",serif; font-size:1.25rem; line-height:1.5}
+
     details.reveal{border-radius:18px; background:#ffffff; padding:18px 18px 6px; box-shadow:0 8px 30px rgba(0,0,0,.06)}
     details.reveal summary{list-style:none; cursor:pointer; font-weight:700}
     details.reveal[open]{outline:2px solid var(--ring)}
     .audio-wrap{display:flex; gap:12px; align-items:center; flex-wrap:wrap}
     .soft{color:var(--muted)}
+
     footer{padding:48px 24px 72px; text-align:center; color:var(--muted)}
     .fade{opacity:0; transform:translateY(10px); transition:opacity .7s ease, transform .7s ease}
     .fade.show{opacity:1; transform:none}
+
     :focus-visible{outline:3px solid var(--ring); outline-offset:4px; border-radius:12px}
     @media (prefers-reduced-motion:reduce){
       *{animation:none!important; transition:none!important}
@@ -79,8 +83,9 @@
       <button class="btn" id="playBtn" type="button">Play me</button>
       <button class="btn outline" id="muteBtn" type="button" aria-pressed="false">Mute</button>
 
-      <!-- existing navigation buttons -->
+      <!-- navigation -->
       <a class="btn" href="#message">Read the message</a>
+      <a class="btn outline" href="superhero.html">My Superhero →</a>
       <a class="btn outline" href="memories.html">Little memories</a>
     </div>
 
@@ -104,6 +109,16 @@
         <summary>Click to reveal a little reminder</summary>
         <p class="soft">You are the chapter I always read twice.</p>
       </details>
+    </section>
+
+    <!-- SECTION: Superhero (teaser with link to full page) -->
+    <section id="superhero" class="fade">
+      <h2 class="section-title">My Superhero</h2>
+      <p class="section-lead">Who she is, through my eyes.</p>
+      <div class="card">
+        <p class="soft">A tribute to Kendall Hall — the light that turns ordinary into extraordinary.</p>
+        <a class="btn" href="superhero.html">Read the tribute →</a>
+      </div>
     </section>
 
     <!-- SECTION: Little Memories -->
