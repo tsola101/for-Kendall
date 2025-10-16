@@ -14,39 +14,58 @@
 </head>
 <body>
   <div class="row">
-    <button id="muteBtn" aria-pressed="false">Mute</button>
+    <button id="toggleBtn">Pause</button>
     <button id="closeBtn">Stop</button>
     <span class="soft" id="status">Playing…</span>
   </div>
 
-  <!-- Added autoplay + playsinline for better mobile behavior -->
+  <!-- Autoplay + playsinline for mobile; loops softly -->
   <audio id="bg" src="audio/all-of-me-piano.mp3" preload="auto" loop autoplay playsinline></audio>
 
   <script>
-    const a        = document.getElementById('bg');
-    const muteBtn  = document.getElementById('muteBtn');
-    const closeBtn = document.getElementById('closeBtn');
-    const statusEl = document.getElementById('status');
+    const a         = document.getElementById('bg');
+    const toggleBtn = document.getElementById('toggleBtn');
+    const closeBtn  = document.getElementById('closeBtn');
+    const statusEl  = document.getElementById('status');
 
-    // Try to start immediately; opener click counts as a user gesture on mobile
+    // Try to start immediately (allowed because opener click is a user gesture)
     (async () => {
-      try { await a.play(); } catch(e) { /* If blocked, user can tap controls */ }
+      try { 
+        await a.play();
+        toggleBtn.textContent = 'Pause';
+        statusEl.textContent  = 'Playing…';
+      } catch(e) {
+        // If blocked, show "Start"
+        toggleBtn.textContent = 'Start';
+        statusEl.textContent  = 'Paused';
+      }
     })();
 
-    muteBtn.onclick = () => {
-      a.muted = !a.muted;
-      muteBtn.textContent = a.muted ? 'Unmute' : 'Mute';
-      muteBtn.setAttribute('aria-pressed', a.muted ? 'true' : 'false');
-      statusEl.textContent = a.paused ? 'Paused' : (a.muted ? 'Playing (muted)…' : 'Playing…');
+    // Start/Pause toggle
+    toggleBtn.onclick = async () => {
+      if (a.paused) {
+        try {
+          await a.play();
+          toggleBtn.textContent = 'Pause';
+          statusEl.textContent  = 'Playing…';
+        } catch(e) {
+          // ignore
+        }
+      } else {
+        a.pause();
+        toggleBtn.textContent = 'Start';
+        statusEl.textContent  = 'Paused';
+      }
     };
 
+    // Stop closes the window and stops audio
     closeBtn.onclick = () => { a.pause(); window.close(); };
 
-    // Nice status updates
-    a.addEventListener('play',  () => statusEl.textContent = a.muted ? 'Playing (muted)…' : 'Playing…');
-    a.addEventListener('pause', () => statusEl.textContent = 'Paused');
+    // Keep label/status in sync with media events
+    a.addEventListener('play',  ()=>{ toggleBtn.textContent='Pause'; statusEl.textContent='Playing…'; });
+    a.addEventListener('pause', ()=>{ toggleBtn.textContent='Start'; statusEl.textContent='Paused'; });
 
-    // Safety: pause if the popup is closed by navigation
+    // Safety: pause if the popup navigates/closes
     window.addEventListener('beforeunload', () => a.pause());
   </script>
 </body>
