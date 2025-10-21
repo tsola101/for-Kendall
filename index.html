@@ -160,12 +160,11 @@
       </div>
     </section>
 
-    <!-- SECTION: My Final Message (moved here to replace the former 'What I Hope You Remember') -->
+    <!-- SECTION: My Final Message (same layout, snippet removed) -->
     <section id="final" class="fade">
       <h2 class="section-title">My Final Message to Kendall</h2>
       <p class="section-lead">A long, unfiltered promise about what love means to me.</p>
       <div class="card sm-6">
-        <p class="soft"><strong>Snippet:</strong> “A message to Kendall Hall: How I see our love.”</p>
         <a class="btn" href="final-message.html" onclick="return openPlayerIfNeeded(event)">Read the full message →</a>
       </div>
     </section>
@@ -205,7 +204,7 @@
     function stopPlayer() {
       try { if (playerWin && !playerWin.closed) playerWin.close(); } catch(e){}
       const maybe = window.open('', 'music');
-      try { if (maybe && !maybe.closed) maybe.close(); } catch(e){}
+      try { if (maybe && !maybe.closed) maybe close(); } catch(e){}
       sessionStorage.removeItem('musicOpen');
     }
 
