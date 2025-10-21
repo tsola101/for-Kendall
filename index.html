@@ -76,12 +76,10 @@
     <h1 class="title fade">For Kendall — from the heart of Adrian</h1>
     <p class="subtitle fade" style="--delay:.1s">A quiet space where my words can reach you, even when I can't.</p>
 
-    <!-- FIRST THING: music + nav controls -->
     <div class="btns fade" style="--delay:.15s">
       <button class="btn" id="playBtn" type="button">Play me</button>
       <button class="btn outline" id="stopBtn" type="button">Stop music</button>
 
-      <!-- navigation (first click can auto-open the player) -->
       <a class="btn" href="#message">Read the message</a>
       <a class="btn outline" href="superhero.html" onclick="return openPlayerIfNeeded(event)">My Superhero →</a>
       <a class="btn outline" href="memories.html" onclick="return openPlayerIfNeeded(event)">Little memories</a>
@@ -107,7 +105,7 @@
       </details>
     </section>
 
-    <!-- SECTION: Superhero (teaser with link to full page) -->
+    <!-- SECTION: Superhero -->
     <section id="superhero" class="fade">
       <h2 class="section-title">My Superhero</h2>
       <p class="section-lead">Who she is, through my eyes.</p>
@@ -118,14 +116,13 @@
     </section>
 
     <!-- SECTION: Her One Weakness -->
-<section id="tread" class="fade">
-  <h2 class="section-title">Her One Weakness</h2>
-  <div class="card">
-    <p class="soft">A tiny, funny thing that still makes me smile.</p>
-    <a class="btn" href="treadmill.html">The One Thing You Couldn’t Do →</a>
-  </div>
-</section>
-
+    <section id="tread" class="fade">
+      <h2 class="section-title">Her One Weakness</h2>
+      <div class="card">
+        <p class="soft">A tiny, funny thing that still makes me smile.</p>
+        <a class="btn" href="treadmill.html">The One Thing You Couldn’t Do →</a>
+      </div>
+    </section>
 
     <!-- SECTION: Little Memories -->
     <section id="memories" class="fade">
@@ -148,7 +145,7 @@
           <p class="soft">The way your voice could make a heavy day feel soft again.</p>
         </article>
       </div>
-      <div style="margin-top:16px">
+      <div style="margin-top:16px)">
         <a class="btn outline" href="memories.html" onclick="return openPlayerIfNeeded(event)" aria-label="See all memories">See all memories →</a>
       </div>
     </section>
@@ -163,15 +160,12 @@
       </div>
     </section>
 
-    <!-- SECTION: What I Hope You Remember -->
-    <section class="fade" id="remember">
-      <h2 class="section-title">What I Hope You Remember</h2>
-      <div class="grid">
-        <article class="card">
-          <p class="quote">Someone asked me recently, why do you love her and don’t say cuz she’s hot or nice or caring , look deeper. 
-The person you love is also the person who triggers you the most, and it’s not a coincidence it’s how love actually works, as my partner you’re not meant to just make me happy, youre there to show me parts of myself I didn’t know existed, the parts I’ve been avoiding, the wounds that haven’t healed, the patterns i keep repeating. The way you challenge me, the way you make me feel exposed and vulnerable, that’s not a problem with our relationship, it’s love doing its  job. Real love doesn’t just comfort you, it forces you to change and grow, it holds up a mirror to your habits and deepest fears. It makes you confront the parts of yourself you ignore. That’s why relationships are so hard, you’re not just dealing with another person but the parts of you they bring out in you that you thought you had handled. Love isn’t meant to be easy it’s meant to change you. And I know I love you because it’s what makes me not want to stop ever. It’s what inspires me to be better for us. Even when people roll their eyes or call me crazy or you push me away even then especially then, love shows up in moments when it’s not expected to. Love isn’t just a feeling, it’s what you do in spite of what you feel, you just don’t give up, Real love doesn’t walk away, it knocks until you’re brave enough to open the door because if I could give up and listen to everyone then it wasn’t really love and deep down I know what I feel for you. I know that I don’t just love you, I’m devoted to you. When I really think about it, I fell for you twice. I didn’t just fall for the loving caring beautiful  parts of you, I also fell for the part of you that you hide from most people, the part of you that’s both good and bad, I fell for the Kendall that wouldn’t always give me space when I’m mad , the Kendall that spoke to me rudely when she got mad and said hurtful things, the Kendall that would go through my phone when I was asleep too. But irregardless of all that I still choose you. 
-I care about you deeply and I love you deeply, I don’t just love who you are now, I love you for who I know you’re gonna become too. And I wannabe here for that. And I believe that I am willing to give to this relationship on a level that is irreplaceable. And I know that there are things you wish were different about this relationship or you wouldn’t hv ended it. I am prepared to do everything in my power to work on things that I need to work on and if there’s genuinely anything that falls into my lap that I need to work on, I am willing to do that work because this relationship matters to me. But it takes 2, if you want this work and you care about me and love me on the level that I do you I trust that you’ll give it a shot but if you genuinely don’t want to give me the chance to fight for this then you must be right and this isn’t what I thought it was. So I can’t make u say yes to trying this again but I can tell you what I’m willing to do and what I would love to do to make this work. I’ll end it with this tho, Grass isn’t only Green on the other side, grass is greener wherever  you water it. </p>
-        </article>
+    <!-- SECTION: My Final Message (same layout, no snippet) -->
+    <section id="final" class="fade">
+      <h2 class="section-title">My Final Message to Kendall</h2>
+      <p class="section-lead">A long, unfiltered promise about what love means to me.</p>
+      <div class="card sm-6">
+        <a class="btn" href="final-message.html" onclick="return openPlayerIfNeeded(event)">Read the full message →</a>
       </div>
     </section>
 
@@ -209,23 +203,18 @@ I care about you deeply and I love you deeply, I don’t just love who you are n
 
     function stopPlayer() {
       try { if (playerWin && !playerWin.closed) playerWin.close(); } catch(e){}
-      // Also attempt to close any window with the same name (if reopened)
       const maybe = window.open('', 'music');
       try { if (maybe && !maybe.closed) maybe.close(); } catch(e){}
       sessionStorage.removeItem('musicOpen');
     }
 
-    // If the player isn't open yet, open it once, then allow navigation
     function openPlayerIfNeeded(evt){
       if (!sessionStorage.getItem('musicOpen')) {
         openPlayer();
-        // allow normal navigation right after (same click counts as gesture)
-        // no preventDefault -> link proceeds
       }
       return true;
     }
 
-    // Hook header buttons
     document.getElementById('playBtn').addEventListener('click', openPlayer);
     document.getElementById('stopBtn').addEventListener('click', stopPlayer);
   </script>
