@@ -69,6 +69,22 @@
       *{animation:none!important; transition:none!important}
       .fade{opacity:1!important; transform:none!important}
     }
+
+    /* --- Fix card overlap / tight spacing in Little Memories --- */
+    #memories .grid{
+      gap:24px;           /* more space between memory cards */
+      align-items:start;  /* keep cards from stretching oddly */
+      margin-bottom:16px; /* breathing room before the button row */
+    }
+    #memories .card{
+      position:relative;
+      z-index:0;
+      overflow:hidden;
+    }
+    #memories a.btn{
+      position:relative;  /* make sure the button sits above shadows */
+      z-index:1;
+    }
   </style>
 </head>
 <body>
@@ -145,7 +161,7 @@
           <p class="soft">The way your voice could make a heavy day feel soft again.</p>
         </article>
       </div>
-      <div style="margin-top:16px)">
+      <div style="margin-top:16px">
         <a class="btn outline" href="memories.html" onclick="return openPlayerIfNeeded(event)" aria-label="See all memories">See all memories →</a>
       </div>
     </section>
